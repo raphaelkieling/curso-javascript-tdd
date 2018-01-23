@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <style>
+    .g{
+      background:red;
+    }
+  </style>
+</head>
+<body>
+
+	<script>
+    function green(template,...values){
+      return template.reduce((accumulator,part,i)=>{
+          return `
+            ${accumulator}
+            <span class="g">${values[i - 1]}</span>
+            ${part}
+          `
+      });
+    }
+
+    const nome = 'Raphael';
+    const mensagem = green`Ola ${nome}`;
+
+    document.body.innerHTML = mensagem;
+	</script>
+</body>
+</html>

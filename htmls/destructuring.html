@@ -1,0 +1,19 @@
+<html>
+  <script>
+    const pessoa = {
+      nome:'raphael',
+      idade:17
+    };
+
+    const { nome:db , idade , mae = 'jose'} = pessoa;
+    console.log(db);
+    console.log(idade);
+    console.log(mae);
+
+
+
+    let txt = 'Amigos';
+    let it  = txt[Symbol.iterator]();
+    console.log(it.next());
+  </script>
+</html>

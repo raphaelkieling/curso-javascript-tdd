@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Grupo testes</title>
+  <style>
+    .false{
+      background:red;
+    }
+
+    .true{
+       background:green;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>Grupo</h3>
+  <ul id="results"></ul>
+
+  <script>
+    (function () {
+      let fila = [], resultados = null;
+      this.teste = (nome, callback) => {
+        fila.push(() => {
+          resultados = document.getElementById('results');
+          resultados = esperado(true, nome).appendChild(document.createElement('ul'))
+          callback();
+        });
+
+        rodarTestes();
+      }
+
+      this.esperado = (value, desc) => {
+        let li = document.createElement('li');
+        li.appendChild(document.createTextNode(desc))
+        li.className = value ? 'true' : 'false'
+        resultados.appendChild(li);
+
+        if(!value){
+          li.parentNode.parentNode.className = "false"
+        }
+
+        return li;
+      }
+
+      this.rodarTestes = () => {
+        if (fila.length) {
+          fila.shift()();
+        }
+      }
+    })();
+
+    window.onload = function () {
+      teste('nome1', function () {
+        setTimeout(()=>{
+          esperado(false, 'legaaaal');
+        },1000)
+        esperado(true, 'legaaaal')
+        esperado(true, 'legaaaal')
+      })
+    }
+  </script>
+</body>
+
+</html>

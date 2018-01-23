@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Grupo Teste</title>
+</head>
+
+<style>
+  .pass{
+    background:green
+  }
+  .fail{
+    background:red;
+  }
+
+</style>
+
+<body>
+  <h1>Grupo</h1>
+  <ul id="results"></ul>
+  <script>
+    (function () {
+      let results = null;
+      this.assert = function assert(value, desc) {
+        var li = document.createElement('li');
+        li.className = value ? "pass" : "fail";
+        li.appendChild(document.createTextNode(desc));
+        results.appendChild(li);
+
+        if (!value) {
+          li.parentNode.parentNode.className = "fail"
+        }
+        return li;
+      }
+
+      this.test = function test(name, fn) {
+        results = document.getElementById('results');
+        results = assert(true, name).appendChild(document.createElement('ul'));
+        fn();
+      }
+    })();
+
+    window.onload = function () {
+      test('a teste', function () {
+        assert(true, 'fierste teste');
+        assert(false, 'second')
+      })
+    }
+
+    // function assert(value,desc){
+    //   let li = document.createElement('li');
+    //   li.className = value ? 'pass' : 'fail';
+    //   li.appendChild(document.createTextNode(desc));
+    //   document.getElementById('results').appendChild(li);
+    // }
+
+    // window.onload = function(){
+    //   assert(true,'Deu certo');
+    //   assert(true,'Deu certo');
+    //   assert(false,'houve erro')
+    //   assert(true,'Deu certo');
+    // }
+  </script>
+</body>
+
+</html>
