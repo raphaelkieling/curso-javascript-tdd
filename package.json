@@ -11,12 +11,17 @@
     "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
     "test:coverage": "nyc npm test"
   },
-  "nyc":{
-    "function":80,
-    "lines":80,
-    "check-coverage":true,
-    "reporter":["text","html"],
-    "exclude":["tests/**"]
+  "nyc": {
+    "function": 80,
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -33,7 +38,11 @@
     "eslint-plugin-react": "^7.5.1",
     "husky": "^0.11.9",
     "mocha": "^5.0.0",
-    "nyc": "^11.4.1"
+    "node-fetch": "^1.7.3",
+    "nyc": "^11.4.1",
+    "sinon": "^4.2.0",
+    "sinon-chai": "^2.14.0",
+    "sinon-stub-promise": "^4.0.0"
   },
   "dependencies": {
     "quimuco": "^1.0.2"
